@@ -1,0 +1,11 @@
+version: '3.1'
+
+services:
+  ether-faucet:
+    container_name: devenv_ether_faucet
+    image: ether-faucet:latest
+    restart: always
+    volumes:
+      - ../conf:/opt/app/conf
+    ports:
+      - "56550:56550"
