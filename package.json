@@ -1,6 +1,6 @@
 {
   "name": "ether-faucet",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Faucet contract & microservice for the Ethereum ecosystem",
   "author": "jovijovi <mageyul@hotmail.com>",
   "license": "MIT",
@@ -46,7 +46,7 @@
     "chai": "4.3.6",
     "chai-as-promised": "^7.1.1",
     "eslint": "^8.15.0",
-    "hardhat": "2.9.5",
+    "hardhat": "2.9.6",
     "mocha": "^10.0.0",
     "ts-node": "10.7.0",
     "typechain": "8.0.0",
