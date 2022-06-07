@@ -18,9 +18,9 @@ A Faucet contract & microservice for the Ethereum ecosystem.
 
 ## Development Environment
 
-- typescript `4.6.4`
-- node `v16.15.0`
-- ts-node `v10.8.0`
+- typescript `4.7.3`
+- node `v16.15.1`
+- ts-node `v10.8.1`
 - yarn `v1.22.18`
 
 ## Quick Guide
