@@ -86,4 +86,20 @@ contract Faucet is ReentrancyGuard, Ownable, PermissionControl {
 
         emit Withdraw(block.number, recipient, amount);
     }
+
+    /**
+     * @dev Withdraw all.
+     * Ethers will be temporarily transferred until the contract is upgraded.
+     */
+    function withdrawAll(address payable recipient) public nonReentrant onlyOwner onlyRecipientNotBanned(recipient) {
+        require(recipient != address(0), "Faucet: zero address is invalid");
+        require(recipient != address(this), "Faucet: invalid address, cannot withdraw to the Faucet contract itself");
+        require(block.number - _lastWithdrawBlockNumberMap[recipient] >= _withdrawInterval, "Faucet: withdraw is not available at the current block height");
+
+        uint256 amount = address(this).balance;
+        recipient.transfer(amount);
+        _lastWithdrawBlockNumberMap[recipient] = block.number;
+
+        emit Withdraw(block.number, recipient, amount);
+    }
 }
