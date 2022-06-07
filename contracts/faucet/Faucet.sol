@@ -78,7 +78,7 @@ contract Faucet is ReentrancyGuard, Ownable, PermissionControl {
         require(amount > 0 && amount <= _maxWithdrawAmount, "Faucet: invalid amount, it should be in the range (0,5]");
         require(recipient != address(0), "Faucet: zero address is invalid");
         require(recipient != address(this), "Faucet: invalid address, cannot withdraw to the Faucet contract itself");
-        require(address(this).balance > amount, "Faucet: insufficient faucet balance");
+        require(amount <= address(this).balance, "Faucet: insufficient faucet balance");
         require(block.number - _lastWithdrawBlockNumberMap[recipient] >= _withdrawInterval, "Faucet: withdraw is not available at the current block height");
 
         recipient.transfer(amount);
