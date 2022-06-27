@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Faucet Contract v0.2.0
+// Faucet Contract v0.2.1
 pragma solidity ^0.8.4;
 
 import {ReentrancyGuard} from "@openzeppelin/contracts/security/ReentrancyGuard.sol";
@@ -79,7 +79,9 @@ contract Faucet is ReentrancyGuard, Ownable, PermissionControl {
         require(recipient != address(0), "Faucet: zero address is invalid");
         require(recipient != address(this), "Faucet: invalid address, cannot withdraw to the Faucet contract itself");
         require(amount <= address(this).balance, "Faucet: insufficient faucet balance");
-        require(block.number - _lastWithdrawBlockNumberMap[recipient] >= _withdrawInterval, "Faucet: withdraw is not available at the current block height");
+        if (_lastWithdrawBlockNumberMap[recipient] > 0) {
+            require(block.number - _lastWithdrawBlockNumberMap[recipient] >= _withdrawInterval, "Faucet: withdraw is not available at the current block height");
+        }
 
         recipient.transfer(amount);
         _lastWithdrawBlockNumberMap[recipient] = block.number;
@@ -94,7 +96,9 @@ contract Faucet is ReentrancyGuard, Ownable, PermissionControl {
     function withdrawAll(address payable recipient) public nonReentrant onlyOwner onlyRecipientNotBanned(recipient) {
         require(recipient != address(0), "Faucet: zero address is invalid");
         require(recipient != address(this), "Faucet: invalid address, cannot withdraw to the Faucet contract itself");
-        require(block.number - _lastWithdrawBlockNumberMap[recipient] >= _withdrawInterval, "Faucet: withdraw is not available at the current block height");
+        if (_lastWithdrawBlockNumberMap[recipient] > 0) {
+            require(block.number - _lastWithdrawBlockNumberMap[recipient] >= _withdrawInterval, "Faucet: withdraw is not available at the current block height");
+        }
 
         uint256 amount = address(this).balance;
         recipient.transfer(amount);
