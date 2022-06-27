@@ -1,5 +1,6 @@
 import * as core from 'express-serve-static-core';
 import {ITaskHandler} from '@jovijovi/pedrojs-network-http';
+import {TwoFAToken} from '@jovijovi/express-2fa-token';
 import {faucet} from '../contracts';
 
 function defaultAPIs(router: core.Express) {
@@ -10,6 +11,10 @@ class privateImplHandlers implements ITaskHandler {
 	RegisterHandlers(router: core.Express) {
 		faucet.Handler.APIs(router);
 		defaultAPIs(router);
+	}
+
+	UseMiddleware(app: core.Express) {
+		app.use(TwoFAToken);
 	}
 }
 
