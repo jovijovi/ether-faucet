@@ -10,7 +10,7 @@ import {GetOperator} from './operator';
 
 // Withdraw
 export async function Withdraw(address: string, amount: string): Promise<TransactionReceipt> {
-	const provider = network.MyProvider.Get();
+	const provider = network.MyProvider.Get(true);
 	const operator = GetOperator(customConfig.GetFaucet().randomFaucet);
 	const pk = await keystore.InspectKeystorePK(operator.address, KeystoreTypeOperator, operator.keyStoreSK);
 	const contract = GetContract(customConfig.GetFaucet().faucetContractAddress, pk);
