@@ -14,9 +14,7 @@ COPY hardhat.config.ts /opt/app_src/
 COPY git.json /opt/app_src/
 
 WORKDIR /opt/app_src
-RUN apt-get update \
-    && apt-get install -y libudev-dev \
-    && yarn install --frozen-lockfile \
+RUN yarn install --frozen-lockfile \
     && yarn build
 
 FROM node:${NODE_VER}-alpine as runtime
