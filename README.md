@@ -18,9 +18,13 @@ A Faucet contract & microservice for the Ethereum ecosystem.
 ## Development Environment
 
 - typescript `4.7.4`
-- node `v16.16.0`
+- node `v16.17.0`
 - ts-node `v10.9.1`
 - yarn `v1.22.19`
+
+## Contract Dependencies
+
+- @openzeppelin/contracts: [`4.7.3`](https://www.npmjs.com/package/@openzeppelin/contracts/v/4.7.3)
 
 ## Quick Guide
 
