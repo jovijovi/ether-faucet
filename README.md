@@ -1,11 +1,14 @@
 # Ether Faucet
 
+[![GitHub Actions](https://github.com/jovijovi/ether-faucet/workflows/Test/badge.svg)](https://github.com/jovijovi/ether-faucet)
+
 A Faucet contract & microservice for the Ethereum ecosystem.
 
 ## Features
 
-- Faucet contract with permission control
-- Faucet operator pool
+- Faucet contract
+  - Permission control
+  - Operator pool
 - Safe keystore
 - RESTFul Faucet APIs for the Ethereum ecosystem
 - Microservice run in Docker
