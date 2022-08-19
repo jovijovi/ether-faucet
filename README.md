@@ -1,11 +1,14 @@
 # Ether Faucet
 
+[![GitHub Actions](https://github.com/jovijovi/ether-faucet/workflows/Test/badge.svg)](https://github.com/jovijovi/ether-faucet)
+
 A Faucet contract & microservice for the Ethereum ecosystem.
 
 ## Features
 
-- Faucet contract with permission control
-- Faucet operator pool
+- Faucet contract
+  - Permission control
+  - Operator pool
 - Safe keystore
 - RESTFul Faucet APIs for the Ethereum ecosystem
 - Microservice run in Docker
@@ -18,9 +21,13 @@ A Faucet contract & microservice for the Ethereum ecosystem.
 ## Development Environment
 
 - typescript `4.7.4`
-- node `v16.16.0`
-- ts-node `v10.8.2`
+- node `v16.17.0`
+- ts-node `v10.9.1`
 - yarn `v1.22.19`
+
+## Contract Dependencies
+
+- @openzeppelin/contracts: [`4.7.3`](https://www.npmjs.com/package/@openzeppelin/contracts/v/4.7.3)
 
 ## Quick Guide
 
