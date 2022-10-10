@@ -1,9 +1,19 @@
+# misc
+.DS_Store
+.env.*
 .git
-.vscode
-.idea
 .github
 
-/test
-**/node_modules
+# IDE
+/.idea
+/.vscode
 
-Dockerfile
+# builders
+/*.tar
+/*.tar.gz
+/_dev
+/_release
+/_backup
+/keystore
+/flattened
+/test
