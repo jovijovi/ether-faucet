@@ -14,7 +14,8 @@ COPY hardhat.config.ts /opt/app_src/
 COPY git.json /opt/app_src/
 
 WORKDIR /opt/app_src
-RUN yarn install --frozen-lockfile \
+RUN apk update && apk add --no-cache libc6-compat \
+    && yarn install --frozen-lockfile \
     && yarn build
 
 FROM node:${NODE_VER}-alpine as runtime
